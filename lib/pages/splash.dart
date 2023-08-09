@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(milliseconds: 500), () {
+    Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const BrowsePage()),
       );
@@ -29,21 +29,29 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: navy,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/logo_stb_cropped.png',
-            width: MediaQuery.sizeOf(context).width / 1.5,
-          ),
-          const SizedBox(height: 48),
-          Text(
-            "STB DIRECT   Premium",
-            style: h1,
-            textAlign: TextAlign.center,
-          )
-        ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: gradient),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/logo_stb_cropped.png',
+              width: MediaQuery.sizeOf(context).width / 1.5,
+            ),
+            const SizedBox(height: 48),
+            Text(
+              "STB DIRECT   Premium",
+              style: splashtitle,
+              textAlign: TextAlign.center,
+            )
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+TextStyle splashtitle = GoogleFonts.quattrocento(
+  color: white,
+  fontSize: 64,
+  // fontWeight: FontWeight.w600,
+);
 TextStyle h1 = GoogleFonts.questrial(
   color: white,
   fontSize: 42,

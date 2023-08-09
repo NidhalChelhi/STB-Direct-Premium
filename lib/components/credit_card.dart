@@ -17,13 +17,10 @@ Container creditCard() {
       ),
     ),
     child: Padding(
-      padding: const EdgeInsets.only(top: 35, left: 24),
+      padding: const EdgeInsets.only(top: 45, left: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 10,
-          ),
           Text(
             'Balance',
             style: p,

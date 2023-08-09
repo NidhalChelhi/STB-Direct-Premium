@@ -133,16 +133,16 @@ class _BrowsePageState extends State<BrowsePage> {
                       ],
                     ),
                     Container(
-                      width: 60,
-                      height: 60,
+                      width: 80,
+                      height: 80,
                       decoration: BoxDecoration(
                         color: white,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(20),
                         ),
                         image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://images.squarespace-cdn.com/content/v1/552403f5e4b00ed50628c8b9/1680543327453-UJE916WT8JJTWKF5172C/Headshot_Corporate_Photographer_Studio_Session_Business_LinkedIn_CV_Shooting_Professional_Portrait_Professionnel_Photography_Bruxelles_Brussels_Prix_Price_Best_Devis_Quote_Lillo_Mendola_136.jpg'),
+                          image: AssetImage('assets/avatar.jpg'),
+                          alignment: Alignment.centerRight,
                           fit: BoxFit.cover,
                         ),
                       ),

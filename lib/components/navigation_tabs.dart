@@ -15,39 +15,36 @@ Wrap navigationsTabs(List<NavlinkModel> data, double width) {
   );
 }
 
-Padding navTab(NavlinkModel navLink, double width) {
-  return Padding(
-    padding: const EdgeInsets.all(0.0),
-    child: Container(
-      height: width * 0.25,
-      width: width * 0.27,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(24),
-        ),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            purple,
-            blueTwo,
-          ],
-        ),
+Container navTab(NavlinkModel navLink, double width) {
+  return Container(
+    height: width * 0.25,
+    width: width * 0.27,
+    decoration: BoxDecoration(
+      borderRadius: const BorderRadius.all(
+        Radius.circular(24),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          navLink.icon,
-          const SizedBox(
-            height: 14,
-          ),
-          Text(
-            navLink.title,
-            style: header,
-          ),
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          purple,
+          blueTwo,
         ],
       ),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        navLink.icon,
+        const SizedBox(
+          height: 14,
+        ),
+        Text(
+          navLink.title,
+          style: header,
+        ),
+      ],
     ),
   );
 }

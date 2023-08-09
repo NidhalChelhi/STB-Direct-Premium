@@ -27,10 +27,7 @@ Column transactionCard(TransactionModel transaction) {
                 Radius.circular(20),
               ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [transaction.icon],
-            ),
+            child: transaction.icon,
           ),
           const SizedBox(
             width: 14,

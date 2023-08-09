@@ -22,16 +22,16 @@ List<NavlinkModel> navLinks = [
     title: 'Credit',
     route: '/credit',
   ),
-  NavlinkModel(
-    nid: '3',
-    icon: Icon(FeatherIcons.dollarSign, color: white, size: 28),
-    title: 'Credit',
-    route: '/credit',
-  ),
-  NavlinkModel(
-    nid: '3',
-    icon: Icon(FeatherIcons.dollarSign, color: white, size: 28),
-    title: 'Credit',
-    route: '/credit',
-  ),
+  // NavlinkModel(
+  //   nid: '3',
+  //   icon: Icon(FeatherIcons.dollarSign, color: white, size: 28),
+  //   title: 'Credit',
+  //   route: '/credit',
+  // ),
+  // NavlinkModel(
+  //   nid: '3',
+  //   icon: Icon(FeatherIcons.dollarSign, color: white, size: 28),
+  //   title: 'Credit',
+  //   route: '/credit',
+  // ),
 ];
