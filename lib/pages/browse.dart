@@ -1,12 +1,11 @@
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:stb_direct/components/credit_card.dart';
-import 'package:stb_direct/components/last_transactions.dart';
+import 'package:stb_direct/components/custom_credit_card.dart';
+import 'package:stb_direct/components/drawer.dart';
+import 'package:stb_direct/components/transactions_section.dart';
 import 'package:stb_direct/components/navigation_tabs.dart';
 import 'package:stb_direct/constants/navigation_links.dart';
 import 'package:stb_direct/constants/transactions_data.dart';
-import 'package:stb_direct/pages/splash.dart';
-import 'package:stb_direct/styles/color.dart';
+import 'package:stb_direct/styles/colors.dart';
 import 'package:stb_direct/styles/typo.dart';
 
 class BrowsePage extends StatefulWidget {
@@ -24,117 +23,53 @@ class _BrowsePageState extends State<BrowsePage> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: navy,
-      drawer: Drawer(
-        backgroundColor: navy,
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: pink,
+      drawer: drawer(context),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // IconButton(
+              //   icon: Icon(
+              //     FeatherIcons.menu,
+              //     color: white,
+              //     size: 28,
+              //   ),
+              //   onPressed: () {
+              //     if (_scaffoldKey.currentState != null) {
+              //       _scaffoldKey.currentState!.openDrawer();
+              //     }
+              //   },
+              // ),
+              const SizedBox(
+                height: 60,
               ),
-              child: Text(
-                'Drawer Header',
-                style: h3,
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Login',
-                style: h3,
-              ),
-              leading: Icon(
-                FeatherIcons.logIn,
-                color: white,
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, '/login');
-              },
-            ),
-            ListTile(
-              title: Text(
-                'Register',
-                style: h3,
-              ),
-              leading: Icon(
-                FeatherIcons.logOut,
-                color: white,
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, '/register');
-              },
-            ),
-            ListTile(
-                title: Text(
-                  'Splash',
-                  style: h3,
-                ),
-                leading: Icon(
-                  FeatherIcons.home,
-                  color: white,
-                ),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => const SplashScreen()),
-                  );
-                }),
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: gradient),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            // Main Column
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Drawer Button
-                IconButton(
-                  icon: const Icon(
-                    FeatherIcons.menu,
-                    color: Colors.white,
-                    size: 28,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Hi, Malek',
+                        style: h1,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        'Welcome Back !',
+                        style: h3,
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    if (_scaffoldKey.currentState != null) {
-                      _scaffoldKey.currentState!.openDrawer();
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                // Welcome Message + Avatar
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Hi, Malek',
-                          style: h1,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Welcome Back !',
-                          style: h3,
-                        ),
-                      ],
-                    ),
-                    Container(
-                      width: 80,
-                      height: 80,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/virements');
+                    },
+                    child: Container(
+                      width: 60,
+                      height: 60,
                       decoration: BoxDecoration(
                         color: white,
                         borderRadius: const BorderRadius.all(
@@ -147,31 +82,31 @@ class _BrowsePageState extends State<BrowsePage> {
                         ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-                // Credit Card
-                creditCard(),
-                const SizedBox(height: 30),
-                Text(
-                  'Navigation',
-                  style: subHeader,
-                ),
-                const SizedBox(height: 12),
-                navigationsTabs(navLinks, MediaQuery.sizeOf(context).width),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  'Transactions',
-                  style: subHeader,
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                lastTransactions(transactionsData)
-              ],
-            ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              // Credit Card
+              creditCard(context),
+              const SizedBox(height: 30),
+              Text(
+                'Navigation',
+                style: subHeader(white),
+              ),
+              const SizedBox(height: 12),
+              navigationsTabs(navLinks, context),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Dernières Transactions',
+                style: subHeader(white),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              transactionsSection(transactionsData.sublist(0, 3))
+            ],
           ),
         ),
       ),

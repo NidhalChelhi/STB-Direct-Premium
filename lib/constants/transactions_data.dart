@@ -1,7 +1,7 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/models/transaction_model.dart';
-import 'package:stb_direct/styles/color.dart';
+import 'package:stb_direct/styles/colors.dart';
 
 List<TransactionModel> transactionsData = [
   TransactionModel(

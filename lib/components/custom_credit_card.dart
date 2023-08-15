@@ -1,36 +1,37 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:stb_direct/styles/colors.dart';
 import 'package:stb_direct/styles/typo.dart';
 
-Container creditCard() {
+Container creditCard(BuildContext context) {
   return Container(
     width: double.infinity,
     height: 200,
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.all(
+    decoration: BoxDecoration(
+      color: blue,
+      borderRadius: const BorderRadius.all(
         Radius.circular(24),
       ),
-      image: DecorationImage(
+      image: const DecorationImage(
         image: AssetImage('assets/bg_card.png'),
         fit: BoxFit.cover,
       ),
     ),
     child: Padding(
-      padding: const EdgeInsets.only(top: 45, left: 24),
+      padding: const EdgeInsets.only(top: 24, left: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Balance',
-            style: p,
+            style: p(white),
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
             '50,000 TND',
-            style: balance,
+            style: balance(white),
           ),
           const SizedBox(
             height: 30,
@@ -40,17 +41,19 @@ Container creditCard() {
             children: [
               Text(
                 '22/08/2023',
-                style: p,
+                style: p(white),
               ),
               TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cards');
+                },
                 icon: Text(
                   'See All Cards',
-                  style: href,
+                  style: href(white),
                 ),
-                label: const Icon(
+                label: Icon(
                   FeatherIcons.chevronRight,
-                  color: Color(0xff0F0434),
+                  color: white,
                   size: 18,
                 ),
               )

@@ -1,11 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'dart:async';
 import 'package:flutter/material.dart';
-// import 'package:stb_direct/pages/login.dart'; // Import your login page
-import 'package:stb_direct/pages/browse.dart';
-import 'package:stb_direct/styles/color.dart';
-import 'package:stb_direct/styles/typo.dart'; // Import your browse page
+import 'package:stb_direct/styles/colors.dart';
+import 'package:stb_direct/styles/typo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,9 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const BrowsePage()),
-      );
+      Navigator.of(context).pushReplacementNamed('/welcome');
     });
   }
 
@@ -30,26 +24,29 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: navy,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: gradient),
-        ),
+        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height,
+        color: navy,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               'assets/logo_stb_cropped.png',
-              width: MediaQuery.sizeOf(context).width / 1.5,
+              width: MediaQuery.sizeOf(context).width / 2,
             ),
-            const SizedBox(height: 48),
-            Text(
-              "STB DIRECT   Premium",
-              style: splashtitle,
-              textAlign: TextAlign.center,
-            )
+            const SizedBox(
+              height: 20,
+            ),
+            RichText(
+              text: TextSpan(
+                style: title(white),
+                children: <TextSpan>[
+                  const TextSpan(text: 'STB Direct'),
+                  TextSpan(text: ' Premium', style: title(blue)),
+                ],
+              ),
+            ),
           ],
         ),
       ),

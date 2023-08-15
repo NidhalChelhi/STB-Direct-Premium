@@ -1,10 +1,10 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/models/transaction_model.dart';
-import 'package:stb_direct/styles/color.dart';
+import 'package:stb_direct/styles/colors.dart';
 import 'package:stb_direct/styles/typo.dart';
 
-Column lastTransactions(List<TransactionModel> data) {
+Column transactionsSection(List<TransactionModel> data) {
   return Column(
     children: List.generate(data.length, (index) {
       TransactionModel transaction = data[index];
@@ -22,7 +22,7 @@ Column transactionCard(TransactionModel transaction) {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: transaction.type == 'out' ? pink : blue,
+              color: transaction.type == 'out' ? navyTwo : navyTwo,
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
@@ -37,19 +37,21 @@ Column transactionCard(TransactionModel transaction) {
             children: [
               Text(
                 transaction.value,
-                style: subHeader,
+                style: transaction.type == 'out'
+                    ? subHeader(red)
+                    : subHeader(green),
               ),
               const SizedBox(height: 4),
               Text(
                 transaction.title,
-                style: label2,
+                style: label2(),
               ),
             ],
           ),
           const Spacer(),
           IconButton(
             onPressed: () {},
-            icon: Icon(FeatherIcons.arrowRight, color: grey, size: 24),
+            icon: Icon(FeatherIcons.arrowRight, color: white, size: 24),
           ),
         ],
       ),
