@@ -1,21 +1,15 @@
-import 'dart:ui';
-
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:stb_direct/components/custom_credit_card.dart';
+import 'package:stb_direct/models/creditcardData_model.dart';
 import 'package:stb_direct/styles/colors.dart';
 
-const double kCardHeight = 225;
-const double kCardWidth = 356;
+const double kCardHeight = 200;
+const double kCardWidth = 360;
 const double kSpaceBetweenCard = 24;
 const double kSpaceBetweenUnselectCard = 32;
-const double kSpaceUnselectedCardToTop = 300;
+const double kSpaceUnselectedCardToTop = 260;
 const Duration kAnimationDuration = Duration(milliseconds: 245);
-
-class CreditCardData {
-  CreditCardData({required this.backgroundColor});
-  final Color backgroundColor;
-}
 
 class CardsPage extends StatefulWidget {
   const CardsPage({
@@ -43,6 +37,8 @@ class _CardsPageState extends State<CardsPage> {
     creditCards = widget.cardsData
         .map((data) => CreditCard(
               backgroundColor: data.backgroundColor,
+              cardNumber: data.cardNumber,
+              expDate: data.expDate,
             ))
         .toList();
   }
@@ -64,12 +60,10 @@ class _CardsPageState extends State<CardsPage> {
       if (isSelected) {
         return widget.space;
       } else {
-        /// Space from top to place put unselect cards.
         return kSpaceUnselectedCardToTop +
             toUnselectedCardPositionIndex(index) * kSpaceBetweenUnselectCard;
       }
     } else {
-      /// Top first emptySpace + CardSpace + emptySpace + ...
       return widget.space + index * kCardHeight + index * widget.space;
     }
   }
@@ -118,7 +112,7 @@ class _CardsPageState extends State<CardsPage> {
         backgroundColor: navy,
         centerTitle: true,
         title: Text(
-          'Informations sur la carte',
+          'Card Informations',
           style: TextStyle(color: white, fontSize: 24),
         ),
         leading: IconButton(
@@ -146,11 +140,11 @@ class _CardsPageState extends State<CardsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Vos Cartes',
+                            'Card List',
                             style: TextStyle(fontSize: 24, color: white),
                           ),
                           Text(
-                            'Vous avez 3 cartes actives',
+                            'You have ${creditCards.length} active cards',
                             style: TextStyle(
                                 fontSize: 12,
                                 color: greyLight,
@@ -160,9 +154,10 @@ class _CardsPageState extends State<CardsPage> {
                       ),
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          // minimumSize: const Size(122, 34),
                           primary: navyTwo,
                           elevation: 0,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 30),
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(50),
@@ -170,19 +165,26 @@ class _CardsPageState extends State<CardsPage> {
                           ),
                         ),
                         onPressed: () {},
-                        icon: Icon(
+                        label: Icon(
                           FeatherIcons.plusCircle,
                           color: white,
                         ),
-                        label: Text('Add Card',
-                            style: TextStyle(
-                              color: white,
-                            )),
+                        icon: Padding(
+                          padding: const EdgeInsets.only(right: 30.0),
+                          child: Text('Add Card',
+                              style: TextStyle(
+                                color: white,
+                              )),
+                        ),
                       ),
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Stack(
+                  alignment: Alignment.center,
                   children: [
                     AnimatedContainer(
                       duration: kAnimationDuration,
@@ -228,31 +230,45 @@ class _CardsPageState extends State<CardsPage> {
 }
 
 class CreditCard extends StatelessWidget {
-  const CreditCard({
-    Key? key,
-    required this.backgroundColor,
-  }) : super(key: key);
-
+  const CreditCard(
+      {Key? key,
+      required this.backgroundColor,
+      required this.expDate,
+      required this.cardNumber})
+      : super(key: key);
   final Color backgroundColor;
+  final String expDate;
+  final String cardNumber;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CreditCardWidget(
-        cardNumber: '374245455400126',
-        expiryDate: '05/2023',
-        cardHolderName: 'MALEK KHATTAB',
-        cvvCode: '123',
-        showBackView: false,
-        isSwipeGestureEnabled: false,
-        height: kCardHeight,
-        width: MediaQuery.sizeOf(context).width / 1.1,
-        onCreditCardWidgetChange: (_) {},
-        bankName: 'STB',
-        cardType: CardType.mastercard,
-        isHolderNameVisible: true,
-        cardBgColor: navyTwo,
-      ),
+    int year = int.parse(expDate.substring(3));
+    int month = int.parse(expDate.substring(0, 2));
+
+    DateTime now = DateTime.now();
+    DateTime date = DateTime(
+      now.year,
+      now.month,
     );
+
+    int thisYear = date.year;
+    int thisMonth = date.month;
+
+    bool disabled = false;
+
+    if (year < thisYear) {
+      disabled = true;
+    } else if (year <= thisYear && month < thisMonth) {
+      disabled = true;
+    }
+    return Container(
+        foregroundDecoration: BoxDecoration(
+          color: disabled ? greyLight : Colors.transparent,
+          backgroundBlendMode: BlendMode.saturation,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+        child: creditCard(context, backgroundColor, expDate, cardNumber));
   }
 }

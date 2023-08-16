@@ -26,28 +26,26 @@ Expanded navTab(
       onTap: () {
         Navigator.pushNamed(context, navLink.route);
       },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        padding: const EdgeInsets.symmetric(vertical: 18),
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(15),
-            ),
-            color: navyTwo),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            navLink.icon,
-            const SizedBox(
-              height: 14,
-            ),
-            Text(
-              navLink.title,
-              style: subHeader(white),
-            ),
-          ],
-        ),
+      child: Column(
+        children: [
+          Container(
+            height: 60,
+            width: 60,
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(15),
+                ),
+                color: navyTwo),
+            child: navLink.icon,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            navLink.title,
+            style: TextStyle(
+                color: white, fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+        ],
       ),
     ),
   );

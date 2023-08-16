@@ -58,7 +58,7 @@ Drawer drawer(BuildContext context) {
             }),
         ListTile(
             title: Text(
-              'Virements',
+              'Transfers',
               style: h3,
             ),
             leading: Icon(

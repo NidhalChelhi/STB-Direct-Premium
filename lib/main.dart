@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:stb_direct/constants/creditcards_data.dart';
 import 'package:stb_direct/pages/cards_page.dart';
 import 'package:stb_direct/pages/login.dart';
 import 'package:stb_direct/pages/register.dart';
 import 'package:stb_direct/pages/splash.dart';
 import 'package:stb_direct/pages/transactions_page.dart';
 import 'package:stb_direct/pages/welcome.dart';
-import 'package:stb_direct/styles/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,17 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CreditCardData> data = [
-      CreditCardData(
-        backgroundColor: blue,
-      ),
-      CreditCardData(
-        backgroundColor: navyTwo,
-      ),
-      CreditCardData(
-        backgroundColor: pink,
-      ),
-    ];
     return MaterialApp(
       title: 'STB Direct Premium',
       theme: ThemeData(useMaterial3: true, fontFamily: 'Montserrat'),
@@ -37,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const RegisterPage(),
         '/splash': (context) => const SplashScreen(),
         '/virements': (context) => const TransactionPage(),
-        '/cards': (context) => CardsPage(cardsData: data),
+        '/cards': (context) => CardsPage(cardsData: creditCardsData),
       },
       debugShowCheckedModeBanner: false,
     );

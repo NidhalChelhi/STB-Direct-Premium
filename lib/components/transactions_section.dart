@@ -1,4 +1,3 @@
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/models/transaction_model.dart';
 import 'package:stb_direct/styles/colors.dart';
@@ -13,51 +12,47 @@ Column transactionsSection(List<TransactionModel> data) {
   );
 }
 
-Column transactionCard(TransactionModel transaction) {
-  return Column(
-    children: [
-      Row(
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: transaction.type == 'out' ? navyTwo : navyTwo,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(20),
-              ),
+Container transactionCard(TransactionModel transaction) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: Row(
+      children: [
+        Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: navyTwo,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
             ),
-            child: transaction.icon,
           ),
-          const SizedBox(
-            width: 14,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                transaction.value,
-                style: transaction.type == 'out'
-                    ? subHeader(red)
-                    : subHeader(green),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                transaction.title,
-                style: label2(),
-              ),
-            ],
-          ),
-          const Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(FeatherIcons.arrowRight, color: white, size: 24),
-          ),
-        ],
-      ),
-      const SizedBox(
-        height: 14,
-      )
-    ],
+          child: transaction.icon,
+        ),
+        const SizedBox(
+          width: 14,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              transaction.title,
+              style: subHeader(white),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              transaction.date,
+              style: label2(),
+            ),
+          ],
+        ),
+        const Spacer(),
+        Text(
+          transaction.value,
+          style: transaction.type == 'out'
+              ? subHeader(greyLight)
+              : subHeader(white),
+        ),
+      ],
+    ),
   );
 }

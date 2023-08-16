@@ -1,3 +1,4 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/components/custom_credit_card.dart';
 import 'package:stb_direct/components/drawer.dart';
@@ -29,61 +30,89 @@ class _WelcomePageState extends State<WelcomePage> {
           children: [
             Container(
               width: double.infinity,
-              height: 270,
+              height: 220,
               decoration: BoxDecoration(
                 color: navyTwo,
                 borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 60, 24, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                padding: const EdgeInsets.fromLTRB(24, 70, 24, 0),
+                child: Column(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        Text(
-                          'Hi, Malek',
-                          style: h1,
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/avatar.jpg'),
+                              alignment: Alignment.centerRight,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Welcome Back !',
-                          style: h3,
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Welcome Back !',
+                              style: TextStyle(
+                                color: darkGray,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Nidhal Chelhi',
+                              style: TextStyle(
+                                color: white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(FeatherIcons.bell,
+                                  size: 26, color: white),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                if (_scaffoldKey.currentState!.isDrawerOpen) {
+                                  _scaffoldKey.currentState!.closeDrawer();
+                                } else {
+                                  _scaffoldKey.currentState!.openDrawer();
+                                }
+                              },
+                              icon: Icon(FeatherIcons.menu,
+                                  size: 26, color: white),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/virements');
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/avatar.jpg'),
-                            alignment: Alignment.centerRight,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),
               ),
             ),
             Container(
-              transform: Matrix4.translationValues(0.0, -80.0, 0.0),
+              transform: Matrix4.translationValues(0.0, -60.0, 0.0),
               child: Column(
                 children: [
                   Padding(
@@ -91,11 +120,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        creditCard(context),
+                        creditCard(context, blue, '12/2028', '0169'),
                         const SizedBox(height: 30),
                         Text(
                           'Navigation',
-                          style: subHeader(white),
+                          style: TextStyle(
+                              color: white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 12),
                         navigationsTabs(navLinks, context),
@@ -103,13 +135,16 @@ class _WelcomePageState extends State<WelcomePage> {
                           height: 30,
                         ),
                         Text(
-                          'Dernières Transactions',
-                          style: subHeader(white),
+                          'Recent Activities',
+                          style: TextStyle(
+                              color: white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(
                           height: 12,
                         ),
-                        transactionsSection(transactionsData.sublist(0, 3))
+                        transactionsSection(transactionsData.sublist(0, 4))
                       ],
                     ),
                   ),
