@@ -19,3 +19,4 @@ Color pink = const Color(0xffff3c82);
 Color pinkLight = const Color(0xffE9D2FF);
 
 Color yellow = const Color(0xffffaf17);
+Color red = const Color(0xffE82A2A);

@@ -7,7 +7,6 @@ import 'package:stb_direct/components/navigation_tabs.dart';
 import 'package:stb_direct/constants/navigation_links.dart';
 import 'package:stb_direct/constants/transactions_data.dart';
 import 'package:stb_direct/styles/colors.dart';
-import 'package:stb_direct/styles/typo.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -68,7 +67,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             Text(
                               'Welcome Back !',
                               style: TextStyle(
-                                color: darkGray,
+                                color: greyLight,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),

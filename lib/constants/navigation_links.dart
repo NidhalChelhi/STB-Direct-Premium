@@ -2,7 +2,6 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/models/navLink_model.dart';
 import 'package:stb_direct/styles/colors.dart';
-import 'package:stb_direct/styles/typo.dart';
 import 'dart:math' as math;
 
 List<NavlinkModel> navLinks = [

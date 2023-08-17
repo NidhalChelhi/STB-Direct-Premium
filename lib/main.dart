@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'STB Direct Premium',
       theme: ThemeData(useMaterial3: true, fontFamily: 'Montserrat'),
-      home: const SplashScreen(), // Set splash screen as the home
+      home: const SplashScreen(),
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
         '/welcome': (context) => const WelcomePage(),

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/styles/colors.dart';
-import 'package:stb_direct/styles/typo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,10 +39,16 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             RichText(
               text: TextSpan(
-                style: title(white),
+                style: TextStyle(
+                    color: white, fontSize: 32, fontWeight: FontWeight.bold),
                 children: <TextSpan>[
                   const TextSpan(text: 'STB Direct'),
-                  TextSpan(text: ' Premium', style: title(blue)),
+                  TextSpan(
+                      text: ' Premium',
+                      style: TextStyle(
+                          color: blue,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold)),
                 ],
               ),
             ),

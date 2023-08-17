@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stb_direct/models/transaction_model.dart';
 import 'package:stb_direct/styles/colors.dart';
-import 'package:stb_direct/styles/typo.dart';
 
 Column transactionsSection(List<TransactionModel> data) {
   return Column(
@@ -36,12 +35,20 @@ Container transactionCard(TransactionModel transaction) {
           children: [
             Text(
               transaction.title,
-              style: subHeader(white),
+              style: TextStyle(
+                color: white,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             const SizedBox(height: 4),
             Text(
               transaction.date,
-              style: label2(),
+              style: TextStyle(
+                color: greyLight,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ],
         ),
@@ -49,8 +56,16 @@ Container transactionCard(TransactionModel transaction) {
         Text(
           transaction.value,
           style: transaction.type == 'out'
-              ? subHeader(greyLight)
-              : subHeader(white),
+              ? TextStyle(
+                  color: greyLight,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                )
+              : TextStyle(
+                  color: white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
         ),
       ],
     ),

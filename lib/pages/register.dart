@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:stb_direct/components/custom_text_field.dart';
 import 'package:stb_direct/styles/button.dart';
 import 'package:stb_direct/styles/colors.dart';
-import 'package:stb_direct/styles/typo.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -23,7 +22,7 @@ class RegisterPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 100,
+                  height: 80,
                 ),
                 Image.asset(
                   'assets/logo_stb_cropped.png',
@@ -34,17 +33,31 @@ class RegisterPage extends StatelessWidget {
                 ),
                 RichText(
                   text: TextSpan(
-                    style: title(white),
+                    style: TextStyle(
+                        color: white,
+                        fontFamily: 'Montserrat',
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
                     children: <TextSpan>[
                       const TextSpan(text: 'STB Direct'),
-                      TextSpan(text: ' Premium', style: title(blue)),
+                      TextSpan(
+                        text: ' Premium',
+                        style: TextStyle(
+                            color: blue,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Text('Create new account', style: subTitle(white)),
+                Text('Create new account',
+                    style: TextStyle(
+                        color: white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.normal)),
                 const SizedBox(
                   height: 50,
                 ),
@@ -70,7 +83,10 @@ class RegisterPage extends StatelessWidget {
                       },
                       child: Text(
                         'Already have an account ?',
-                        style: label(greyLight),
+                        style: TextStyle(
+                            color: greyLight,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
                   ],
@@ -83,7 +99,11 @@ class RegisterPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/welcome');
                   },
-                  child: Text('Sign Up', style: buttonText(white)),
+                  child: Text('Sign Up',
+                      style: TextStyle(
+                          color: white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(
                   height: 14,
