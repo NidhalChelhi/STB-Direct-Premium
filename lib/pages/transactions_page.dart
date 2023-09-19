@@ -1,4 +1,3 @@
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:stb_direct/components/navigation_tabs.dart';
 import 'package:stb_direct/components/transactions_section.dart';
@@ -12,26 +11,35 @@ class TransactionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: navy,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: navy,
-        centerTitle: true,
-        title: Text(
-          'Transfers',
-          style: TextStyle(color: white, fontSize: 24),
+      backgroundColor: Colors.transparent,
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: navy,
+      //   centerTitle: true,
+      //   title: Text(
+      //     'Transfers',
+      //     style: TextStyle(color: white, fontSize: 24),
+      //   ),
+      //   leading: IconButton(
+      //       onPressed: () {
+      //         Navigator.pop(context);
+      //       },
+      //       icon: Icon(
+      //         FeatherIcons.chevronLeft,
+      //         color: white,
+      //       )),
+      // ),
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg.png'),
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
         ),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              FeatherIcons.chevronLeft,
-              color: white,
-            )),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 70),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

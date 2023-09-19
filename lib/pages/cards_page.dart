@@ -106,26 +106,18 @@ class _CardsPageState extends State<CardsPage> {
     final mediaQuery = MediaQuery.of(context);
 
     return Scaffold(
-      backgroundColor: navy,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: navy,
-        centerTitle: true,
-        title: Text(
-          'Card Informations',
-          style: TextStyle(color: white, fontSize: 24),
+      backgroundColor: Colors.transparent,
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg.png'),
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
         ),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              FeatherIcons.chevronLeft,
-              color: white,
-            )),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 70),
         child: SizedBox.expand(
           child: SingleChildScrollView(
             child: Column(

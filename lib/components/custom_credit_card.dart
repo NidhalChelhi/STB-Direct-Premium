@@ -29,7 +29,7 @@ Container creditCard(
                 'STB',
                 style: TextStyle(
                     color: white,
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'ReadexPro',
                     fontWeight: FontWeight.w900,
                     fontSize: 18),
               )
@@ -42,7 +42,7 @@ Container creditCard(
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
                   color: white,
-                  fontFamily: 'Montserrat'),
+                  fontFamily: 'ReadexPro'),
               children: <TextSpan>[
                 const TextSpan(
                     text: '• • • • ',
@@ -63,7 +63,7 @@ Container creditCard(
                         fontWeight: FontWeight.w600,
                         fontSize: 8,
                         color: white,
-                        fontFamily: 'Montserrat'),
+                        fontFamily: 'ReadexPro'),
                   ),
                   Text(
                     'THRU',
@@ -71,7 +71,7 @@ Container creditCard(
                         fontWeight: FontWeight.w600,
                         fontSize: 8,
                         color: white,
-                        fontFamily: 'Montserrat'),
+                        fontFamily: 'ReadexPro'),
                   )
                 ],
               ),
@@ -82,7 +82,7 @@ Container creditCard(
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
                     color: white,
-                    fontFamily: 'Montserrat'),
+                    fontFamily: 'ReadexPro'),
               )
             ],
           ),
@@ -96,7 +96,7 @@ Container creditCard(
                     fontWeight: FontWeight.w600,
                     fontSize: 20,
                     color: white,
-                    fontFamily: 'Montserrat'),
+                    fontFamily: 'ReadexPro'),
               ),
               const Spacer(),
               SvgPicture.asset(

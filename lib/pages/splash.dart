@@ -14,44 +14,40 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacementNamed('/welcome');
+      Navigator.of(context).pushReplacementNamed('/login');
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: navy,
+      backgroundColor: Colors.transparent,
       body: Container(
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height,
-        color: navy,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg.png'),
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/logo_stb_cropped.png',
+              'assets/icons/symbol_light.png',
               width: MediaQuery.sizeOf(context).width / 2,
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
-            RichText(
-              text: TextSpan(
-                style: TextStyle(
-                    color: white, fontSize: 32, fontWeight: FontWeight.bold),
-                children: <TextSpan>[
-                  const TextSpan(text: 'STB Direct'),
-                  TextSpan(
-                      text: ' Premium',
-                      style: TextStyle(
-                          color: blue,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
+            Text(
+              'STB DIRECT',
+              style: TextStyle(
+                  color: white, fontSize: 32, fontWeight: FontWeight.bold),
+            )
           ],
         ),
       ),

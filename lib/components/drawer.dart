@@ -13,7 +13,7 @@ Drawer drawer(BuildContext context) {
             color: blueTwo,
           ),
           child: Text(
-            'STB Direct Premium - Pages',
+            'STB Direct - Pages',
             style: TextStyle(
                 color: white, fontSize: 26, fontWeight: FontWeight.normal),
           ),

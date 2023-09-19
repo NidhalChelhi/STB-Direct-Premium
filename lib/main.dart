@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'STB Direct Premium',
-      theme: ThemeData(useMaterial3: true, fontFamily: 'Montserrat'),
+      title: 'STB Direct',
+      theme: ThemeData(useMaterial3: true, fontFamily: 'ReadexPro'),
       home: const SplashScreen(),
       routes: {
         '/login': (BuildContext context) => const LoginPage(),

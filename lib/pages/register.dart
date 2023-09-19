@@ -9,10 +9,17 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
-        color: navy,
         width: double.infinity,
-        height: MediaQuery.sizeOf(context).height,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg.png'),
+            fit: BoxFit.cover,
+            alignment: Alignment.center,
+          ),
+        ),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -22,42 +29,20 @@ class RegisterPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 80,
+                  height: 100,
                 ),
                 Image.asset(
-                  'assets/logo_stb_cropped.png',
+                  'assets/icons/symbol_blue.png',
                   width: MediaQuery.sizeOf(context).width / 3,
                 ),
                 const SizedBox(
-                  height: 20,
-                ),
-                RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                        color: white,
-                        fontFamily: 'Montserrat',
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold),
-                    children: <TextSpan>[
-                      const TextSpan(text: 'STB Direct'),
-                      TextSpan(
-                        text: ' Premium',
-                        style: TextStyle(
-                            color: blue,
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
+                  height: 50,
                 ),
                 Text('Create new account',
                     style: TextStyle(
                         color: white,
                         fontSize: 24,
-                        fontWeight: FontWeight.normal)),
+                        fontWeight: FontWeight.w600)),
                 const SizedBox(
                   height: 50,
                 ),

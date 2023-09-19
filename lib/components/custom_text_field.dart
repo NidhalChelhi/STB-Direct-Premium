@@ -16,7 +16,7 @@ ClipRect customTextField(String type) {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: white.withOpacity(
-            0.20,
+            0.10,
           ),
         ),
         child: Padding(
